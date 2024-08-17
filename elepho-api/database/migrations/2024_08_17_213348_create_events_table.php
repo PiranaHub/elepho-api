@@ -37,10 +37,10 @@ return new class extends Migration
             $table->string('registration_cc_email', 255)->nullable();
             $table->string('registration_bcc_email', 255)->nullable();
             $table->string('abstract_email_subject', 255)->nullable();
-            $table->string('confirmation_email_subject', 255);
+            $table->string('confirmation_email_subject', 255)->nullable();
             $table->boolean('has_confirmation_mail')->default(0);
             $table->boolean('has_attachment_badge')->default(1);
-            $table->string('attachment_badge_name', 255);
+            $table->string('attachment_badge_name', 255)->nullable();
             $table->string('accent_color', 10)->default('#0091da');
             $table->string('mailer', 20)->default('smtp');
             $table->timestamps();
