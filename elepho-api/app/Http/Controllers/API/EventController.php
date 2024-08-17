@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -12,7 +13,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return response()->json($events, 200);
     }
 
     /**
@@ -20,7 +22,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = Event::create($request->all());
+        return response()->json($event, 200);
     }
 
     /**
@@ -28,7 +31,8 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return response()->json($event, 200);
     }
 
     /**
@@ -36,7 +40,9 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->update($request->all());
+        return response()->json($event, 200);
     }
 
     /**
@@ -44,6 +50,7 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->delete();
     }
 }
